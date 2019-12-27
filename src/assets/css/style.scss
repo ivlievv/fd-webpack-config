@@ -1,0 +1,20 @@
+
+:root{
+  background-image: url("../images/photo-1499084732479-de2c02d45fcc.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+}
+
+/*
+testsetsetsetsetsetse
+*/
+.test {
+  display: flex;
+  justify-content: space-evenly;
+  color: green;
+  transform: translate(50%, 50%);
+  object-fit: cover;
+  box-shadow: 0 0 0 black;
+}
