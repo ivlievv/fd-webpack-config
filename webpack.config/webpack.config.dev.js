@@ -21,7 +21,6 @@ const config = merge( commonConfig, {
             }
           },
           'sass-loader',
-
         ]
       },
 

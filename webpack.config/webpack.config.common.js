@@ -5,8 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const config = {
   entry: './src/assets/js/index.js',
   output: {
-    filename: 'main.js',
-    path: path.resolve( __dirname, '../build' ),
+    filename: 'index.js',
+    path: path.resolve( __dirname, '../build',),
 
   },
   plugins: [
