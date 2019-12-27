@@ -1,16 +1,24 @@
 const path = require( 'path' );
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' );
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
-  entry: './src/assets/js/index.js',
+  entry: {
+
+    app: './src/assets/js/index.js',
+  },
   output: {
-    filename: 'main.js',
-    path: path.resolve( __dirname, '../build' ),
+    filename: '[name].js',
+    path: path.resolve( __dirname, '../build', ),
 
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([
+                     { from: './src/assets/json', to: '.' },
+
+                   ]),
     new HtmlWebpackPlugin( {
                              template: './src/index.html',
                              meta: {
@@ -25,7 +33,7 @@ const config = {
        * */
       {
         test: /\.(png|svg|jpe?g|gif)$/,
-        use:[
+        use: [
           {
             loader: 'file-loader',
             options: {
@@ -39,9 +47,19 @@ const config = {
        * */
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use:[
+        use: [
           'file-loader'
         ]
+      },
+      {
+        test: /\.json$/,
+        use: [
+          {
+            loader: 'json-loader',
+            options: {
+              name: '[path][name].[ext]',
+            }
+          }]
       },
     ]
   }
